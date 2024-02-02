@@ -5,6 +5,7 @@ int main()
 {
     EventManager::Initialize();
     GameManager::Initialize(); //Initializing GameManager's singleton instance
+    TextureManager::Initialize();
 
     GameManager::Get()->GameLoop();
 

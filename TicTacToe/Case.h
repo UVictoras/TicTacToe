@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "TextureManager.h"
 
 class Case : public GameObject
 {
@@ -10,5 +11,9 @@ public:
 
 	char m_sSignFill;
 
-	Case(bool bType, float fX, float fY, int iIndex, float fSizeL, float fSizeH, sf::Color cColor);
+	sf::Texture m_tTexture;
+
+	Case(bool bType, float fX, float fY, int iIndex, float fSizeL, float fSizeH, sf::Color cColor, sf::Texture* tTexture);
+
+	void FillGrid(char sSign, sf::Texture* tTextureX, sf::Texture* tTextureCircle);
 };

@@ -1,13 +1,12 @@
 #pragma once
-#include "GameObject.h";
 #include "Case.h";
 
-class Player : public GameObject
+class Player
 {
 public:
 	char m_sSign; 
 	
-	Player(char sSign, bool bType, float fX, float fY, float fSizeL, float fSizeH, sf::Color cColor);
+	Player(char sSign);
 
-	void MakePlay(Case* cCase, int* iTurn);
+	void MakePlay(Case* cCase, int* iTurn, sf::Texture* tTextureX, sf::Texture* tTextureCircle);
 };

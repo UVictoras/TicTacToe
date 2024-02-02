@@ -1,6 +1,7 @@
 #pragma once
 #include "EventManager.h"
 #include "Case.h"
+#include "Player.h"
 
 typedef void(*func)();
 using namespace std;
@@ -14,7 +15,7 @@ private:
 
 	sf::RenderWindow oWindow;
 
-	bool bWon, bLost;
+	bool m_bWon1, m_bWon2, m_bTie;
 
 public:
 
@@ -30,19 +31,33 @@ public:
 
 public:
 
-	Case* cCasesList[9];
+	Player* m_pPlayers[2];
 
-	int iTurn;
+	Case* m_cCasesList [9];
+
+	GameObject* m_rBackground;
+
+	sf::Texture* m_tTextureBlank;
+	sf::Texture* m_tTextureX;
+	sf::Texture* m_tTextureCircle;
+
+	int m_iTurn;
 
 	GameManager();
 
+	void CreateGrid();
+
 	void CheckWin();
 
-	void CheckLose();
+	bool IsFullGrid();
+
+	void CheckTie();
 
 	void GameLoop();
 
 	//Events
 
 	void CloseWindow();
+
+	void PlaceSign();
 };
