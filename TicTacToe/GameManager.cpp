@@ -47,9 +47,6 @@ void GameManager::PlaceSign()
                 if (m_iTurn % 2 == 0)
                 {
                     m_pPlayers[1]->MakePlay(cCase, &m_iTurn, m_tTextureX, m_tTextureCircle);
-                    sf::CircleShape oCircle(100.f);
-                    oCircle.setPosition(0.f, 0.f);
-                    oCircle.setFillColor(sf::Color::Blue);
                 }
                 else
                 {
@@ -90,6 +87,15 @@ void GameManager::CreateGrid()
         m_cCasesList[i] = new Case(true, i % 3 * (290 + 25), i / 3 * (290 + 25), i, 290, 290, sf::Color::Black, m_tTextureBlank);
     }
 }
+
+void GameManager::CreateSign()
+{
+    for (int i = 0; i < 9; i++) 
+    {
+        m_gCasesBack[i] = new GameObject(true, i % 3 * (290 + 25), i / 3 * (290 + 25), i, 290, 290, sf::Color::Red, m_tTextureBlank);
+    }
+}
+
 
 void GameManager::CheckWin()
 {
@@ -149,6 +155,12 @@ void GameManager::GameLoop()
         oWindow.clear();
 
         m_rBackground->Draw(&oWindow);
+        for (Case* cCase : m_cCasesList)
+        {
+            cCase->Draw(&oWindow);
+        }
+
+
         for (Case* cCase : m_cCasesList)
         {
             cCase->Draw(&oWindow);

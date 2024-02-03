@@ -33,7 +33,9 @@ public:
 
 	Player* m_pPlayers[2];
 
-	Case* m_cCasesList [9];
+	Case* m_cCasesList [9]; 
+
+	GameObject* m_gCasesBack[9];
 
 	GameObject* m_rBackground;
 
@@ -46,6 +48,8 @@ public:
 	GameManager();
 
 	void CreateGrid();
+
+	void CreateSign(); 
 
 	void CheckWin();
 
