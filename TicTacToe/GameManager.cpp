@@ -47,10 +47,16 @@ void GameManager::PlaceSign()
                 if (m_iTurn % 2 == 0)
                 {
                     m_pPlayers[1]->MakePlay(cCase, &m_iTurn, m_tTextureX, m_tTextureCircle);
+                    sf::CircleShape oCircle(100.f);
+                    oCircle.setPosition(0.f, 0.f);
+                    oCircle.setFillColor(sf::Color::Blue);
                 }
                 else
                 {
                     m_pPlayers[0]->MakePlay(cCase, &m_iTurn, m_tTextureX, m_tTextureCircle);
+                    sf::RectangleShape oRectangle(sf::Vector2f(50.f, 50.f));
+                    oRectangle.setFillColor(sf::Color::Red); 
+
                 }
             }
         }
@@ -70,9 +76,9 @@ GameManager::GameManager() : oWindow(sf::VideoMode(920, 920), "Casse-Brique") //
     m_pPlayers[0] = new Player('x');
     m_pPlayers[1] = new Player('o');
 
-    TextureManager::Get()->CreateTexture("img/blank.png", m_tTextureBlank);
+    /*TextureManager::Get()->CreateTexture("img/blank.png", m_tTextureBlank);
     TextureManager::Get()->CreateTexture("img/x.png", m_tTextureX);
-    TextureManager::Get()->CreateTexture("img/circle.png", m_tTextureCircle);
+    TextureManager::Get()->CreateTexture("img/circle.png", m_tTextureCircle);*/
 }
 
 void GameManager::CreateGrid()
@@ -89,6 +95,12 @@ void GameManager::CheckWin()
 {
     m_bWon1 = false;
 }
+
+void GameManager::CheckDraw()
+{
+    m_bWon2 = false;
+}
+
 
 bool GameManager::IsFullGrid()
 {
@@ -125,7 +137,7 @@ void GameManager::GameLoop()
     EventManager::Get()->AddComponent(sf::Event::EventType::MouseButtonPressed, sf::Mouse::Left, &EventPlaceSign);
 
     //GameLoop
-    while (oWindow.isOpen() && m_bWon == false && m_bLost == false && m_bTie == false)
+    while (oWindow.isOpen() && m_bWon1 == false && m_bWon2 == false && m_bTie == false)
     {
 
         //EVENT
@@ -152,7 +164,7 @@ void GameManager::GameLoop()
         fps = 1.f / fDeltaTime;
 
         CheckWin();
-        CheckLose();
+        CheckDraw();
         CheckTie();
 
     }
