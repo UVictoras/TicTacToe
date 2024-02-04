@@ -45,16 +45,6 @@ GameObject::GameObject(bool bType, float fX, float fY, float fSizeL, float fSize
 	m_sGraphism->setFillColor(cColor);
 }
 
-GameObject::GameObject(bool bType, float fX, float fY, int iIndex, float fSizeL, float fSizeH, sf::Color cColor, sf::Texture* tTexture) : GameObject(bType, fX, fY, fSizeL, fSizeH, cColor)
-{
-	m_bType = false;
-	m_iIndex = iIndex;
-	m_sSignFill = ' ';
-
-	m_sGraphism->setTexture(tTexture);
-}
-
-
 void GameObject::Draw(sf::RenderWindow* oWindow)
 {
 	if (m_sGraphism != nullptr)

@@ -92,7 +92,7 @@ void GameManager::CreateSign()
 {
     for (int i = 0; i < 9; i++) 
     {
-        m_gCasesBack[i] = new GameObject(true, i % 3 * (290 + 25), i / 3 * (290 + 25), i, 290, 290, sf::Color::Red, m_tTextureBlank);
+        m_gCasesBack[i] = new GameObject(true, i % 3 * (290 + 25), i / 3 * (290 + 25), 290, 290, sf::Color::Black);
     }
 }
 
@@ -145,7 +145,6 @@ void GameManager::GameLoop()
     //GameLoop
     while (oWindow.isOpen() && m_bWon1 == false && m_bWon2 == false && m_bTie == false)
     {
-
         //EVENT
         EventManager::Get()->Update(&oWindow);
 
@@ -159,7 +158,6 @@ void GameManager::GameLoop()
         {
             cCase->Draw(&oWindow);
         }
-
 
         for (Case* cCase : m_cCasesList)
         {
@@ -178,6 +176,5 @@ void GameManager::GameLoop()
         CheckWin();
         CheckDraw();
         CheckTie();
-
     }
 }
