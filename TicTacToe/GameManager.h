@@ -15,7 +15,7 @@ private:
 
 	sf::RenderWindow oWindow;
 
-	bool m_bWon1, m_bWon2, m_bTie;
+	bool m_bWon1, m_bWon2, m_bDraw;
 
 public:
 
