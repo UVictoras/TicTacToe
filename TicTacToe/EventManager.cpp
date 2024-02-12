@@ -37,9 +37,12 @@ void EventManager::Update(sf::RenderWindow* oWindow)
         if (oEvent.type == sf::Event::Closed)
             oWindow->close();
 
+        if (oEvent.type == sf::Event::KeyPressed)
+            ManageEvent(oEvent.type, oEvent.key.code);
+
         ManageEvent(oEvent.type, oEvent.mouseButton.button);
 
-        ManageEvent(oEvent.type, oEvent.key.code);
+        //ManageEvent(oEvent.type, oEvent.key.code);
     }
 }
 

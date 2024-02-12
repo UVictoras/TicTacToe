@@ -201,6 +201,7 @@ void GameManager::GameLoop()
         //EVENT
         EventManager::Get()->Update(&oWindow);
 
+
         vLocalPosition = sf::Mouse::getPosition(oWindow);
 
         //DRAW
